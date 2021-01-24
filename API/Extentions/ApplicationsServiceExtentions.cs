@@ -13,6 +13,8 @@ namespace API.Extentions
         {
 
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddDbContext<DataContext>(options =>
             {
                 options.UseSqlite(config.GetConnectionString("DefaultConnection"));

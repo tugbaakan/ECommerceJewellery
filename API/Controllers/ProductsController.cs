@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,37 +12,35 @@ namespace API.Controllers
 {
     public class ProductsController: BaseAPIController
     {
-        private readonly DataContext _context;
-        public ProductsController(DataContext context)
+        private readonly IProductRepository _productRepository;
+        public ProductsController(IProductRepository productRepository)
         {
-            _context = context;
-
+            _productRepository = productRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.ToListAsync();
+            var products =  await _productRepository.GetProductsAsync();
+            return Ok(products);
         }
 
-        // api/products/id
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        // api/products/productId
+        [HttpGet("{productId}")]
+        public async Task<ActionResult<Product>> GetProduct(int productId)
         {
-            return await _context.Products.FindAsync(id);
+            return await _productRepository.GetProductAsync(productId);
         }
 
         [HttpPost()]
-        public async Task<ActionResult<Product>> PostProduct(string productName )
+        public async Task<ActionResult> PostProduct(string productName, string productDescription = null )
         {
-            var product = new Product{
-                ProductName = productName
-            };
+            _productRepository.AddProduct( productName, productDescription);
+            if ( await _productRepository.SaveAllAsync())
+                return Ok();
 
-            _context.Products.Add(product);
-            await _context.SaveChangesAsync();
+            return BadRequest("post product hata");
 
-            return product;
         }
 
     }
