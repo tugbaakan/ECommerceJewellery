@@ -1,0 +1,38 @@
+[
+    {
+	  "ProductId": 1,
+      "StockQuantity": 5
+    },
+	{
+	  "ProductId": 2,
+      "StockQuantity": 7
+    },
+	{
+	  "ProductId": 3,
+      "StockQuantity": 15
+    },
+    {
+	  "ProductId": 4,
+      "StockQuantity": 3
+    },
+    {
+	  "ProductId": 5,
+      "StockQuantity": 4
+    },
+    {
+	  "ProductId": 7,
+      "StockQuantity": 8
+    },
+    {
+	  "ProductId": 8,
+      "StockQuantity": 20
+    },
+    {
+	  "ProductId": 9,
+      "StockQuantity": 1
+    },
+    {
+	  "ProductId": 10,
+      "StockQuantity": 11
+    }
+  ]

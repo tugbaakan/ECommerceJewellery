@@ -62,3 +62,7 @@ C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\obj\Debug
 C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\obj\Debug\net5.0\API.genruntimeconfig.cache
 C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\Humanizer.dll
 C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\Data\SeedProductData.json
+C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\Data\SeedStockData.json

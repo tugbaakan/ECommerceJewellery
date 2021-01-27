@@ -12,16 +12,16 @@ namespace API.Controllers
 {
     public class ProductsController: BaseAPIController
     {
-        private readonly IProductRepository _productRepository;
-        public ProductsController(IProductRepository productRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public ProductsController(IUnitOfWork unitOfWork  )
         {
-            _productRepository = productRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            var products =  await _productRepository.GetProductsAsync();
+            var products =  await _unitOfWork.ProductRepository.GetProductsAsync();
             return Ok(products);
         }
 
@@ -29,14 +29,14 @@ namespace API.Controllers
         [HttpGet("{productId}")]
         public async Task<ActionResult<Product>> GetProduct(int productId)
         {
-            return await _productRepository.GetProductAsync(productId);
+            return await _unitOfWork.ProductRepository.GetProductAsync(productId);
         }
 
         [HttpPost()]
         public async Task<ActionResult> PostProduct(string productName, string productDescription = null )
         {
-            _productRepository.AddProduct( productName, productDescription);
-            if ( await _productRepository.SaveAllAsync())
+            _unitOfWork.ProductRepository.AddProduct( productName, productDescription);
+            if ( await _unitOfWork.Complete() )
                 return Ok();
 
             return BadRequest("post product hata");

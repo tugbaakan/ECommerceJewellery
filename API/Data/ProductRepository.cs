@@ -27,27 +27,7 @@ namespace API.Data
         {
             return await _context.Products.AnyAsync(x => x.Id == productId );
         }
-        public async Task<bool> ProductExistStock(int productId)
-        {
-            var stock = await _context.Stocks.SingleOrDefaultAsync(x => x.ProductId == productId );
-            if ( stock.StockQuantity > 0 )
-                return true;
-            return false;
 
-        }
-        public async Task<bool> ProductExistCart(int productId, int cartId)
-        {
-            var cart = await _context.Carts.FindAsync(cartId);
-            if ( cart.Carties.Any(x => x.ProductId == productId ) )
-            { 
-                var carty = cart.Carties.Where( x => x.ProductId == productId).FirstOrDefault();
-                if ( carty.Quantity > 0 )
-                    return true;
-                return false;
-            }
-            return false;
-
-        }
         public void AddProduct(string productName, string productDescription= null)
         {
             var product = new Product{
@@ -67,11 +47,6 @@ namespace API.Data
 
             _context.Products.Update(product);
 
-        }
-
-        public async Task<bool> SaveAllAsync()
-        {   
-            return await _context.SaveChangesAsync() > 0;
         }
 
        

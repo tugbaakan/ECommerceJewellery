@@ -8,13 +8,15 @@ namespace API.Interfaces
     public interface ICartRepository
     {
         Task<IEnumerable<Cart>> GetCartsAsync();
-        Task<Cart> GetCartAsync(int cartId);
+        Task<CartDto> GetCartAsync(int cartId);
         Task<Cart> GetCartWithCartiesAsync(int cartId);
-        Task<bool> SaveAllAsync();
         Task<bool> AnyCartExist();
         Task<bool> CartExist(int cartid);
         Task AddCart();
+        Task<int> GetProductQuantityInCart(int cartId, int productId);
+        Task<bool> ProductExistCart(int productId, int cartId);
         void AddCarty(int cartId, int productId, int productQuantity);
-        void UpdateCart(Cart cart);
+        void RemoveCarty( int cartId, int productId);
+      
     }
 }

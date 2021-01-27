@@ -6,6 +6,7 @@ namespace API.DTOs
     public class CartDto
     {
         public int Id { get; set; }
-        public List<Carty> Carties {get; set;}
+        public CartyDto CartyLast  { get; set; }
+        public List<CartyDto> Carties {get; set;}
     }
 }

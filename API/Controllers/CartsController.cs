@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
+using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -12,24 +13,24 @@ namespace API.Controllers
 {
     public class CartsController: BaseAPIController
     {
-        private readonly ICartRepository _cartRepository;
-        public CartsController(ICartRepository cartRepository)
+        private readonly IUnitOfWork _unitOfWork;
+        public CartsController(IUnitOfWork unitOfWork )
         {
-            _cartRepository = cartRepository;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cart>>> GetCarts()
         {
-            var carts =  await _cartRepository.GetCartsAsync();
+            var carts =  await _unitOfWork.CartRepository.GetCartsAsync();
             return Ok(carts);
         }
 
 
         [HttpGet("{cartId}")]
-        public async Task<ActionResult<Cart>> GetCart(int cartId)
+        public async Task<ActionResult<CartDto>> GetCart(int cartId)
         {
-            return await _cartRepository.GetCartAsync(cartId);
+            return await _unitOfWork.CartRepository.GetCartAsync(cartId);
         }
 
     }
