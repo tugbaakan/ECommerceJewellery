@@ -1,0 +1,23 @@
+[
+    {
+      "UserId" : 1,
+      "Name" : "majestick bijüteri",
+      "City" : "milano"
+    },
+	  {
+      "UserId" : 5,
+      "Name" : "nuevo takı",
+      "City" : "kayseri"
+    }, 
+    {
+      "UserId" : 7,
+      "Name" : "criminal bileklik",
+      "City" : "bursa"
+    }, 
+    {
+      "UserId" :10,
+      "Name" : "jotun jewellery",
+      "City" : "paris"
+    }
+  
+  ]

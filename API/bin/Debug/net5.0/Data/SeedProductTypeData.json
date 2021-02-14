@@ -1,0 +1,42 @@
+[
+    {
+      "CategoryId" : 1,
+      "Name": "heart necklace"
+    },
+    {
+      "CategoryId" : 1,
+      "Name": "flower necklace"
+    },
+    {
+      "CategoryId" : 1,
+      "Name": "sun necklace"
+    },
+    {
+      "CategoryId" : 2,
+      "Name": "star earing"
+    },
+    {
+      "CategoryId" : 2,
+      "Name": "moon earing"
+    },
+    {
+      "CategoryId" : 3,
+      "Name": "zirkonyum ring"
+    },
+    {
+      "CategoryId" : 4,
+      "Name": "silver bracelet"
+    },
+    {
+      "CategoryId" : 4,
+      "Name": "golden bracelet"
+    },
+    {
+      "CategoryId" : 4,
+      "Name": "steel bracelet"
+    },
+    {
+      "CategoryId" : 4,
+      "Name": "stone bracelet"
+    }
+  ]

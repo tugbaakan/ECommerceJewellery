@@ -65,4 +65,8 @@ C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug
 C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\Data\SeedProductData.json
-C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\Data\SeedStockData.json
+C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\Data\SeedCategoryData.json
+C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\Data\SeedSellerData.json
+C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\Data\SeedUserData.json
+C:\Users\admin\Documents\WebApplicationProjects\EcommerceJewellery\API\bin\Debug\net5.0\Data\SeedProductTypeData.json

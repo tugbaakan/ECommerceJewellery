@@ -22,15 +22,34 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cart>>> GetCarts()
         {
-            var carts =  await _unitOfWork.CartRepository.GetCartsAsync();
+            var carts =  await _unitOfWork.CartRepository.GetCarts();
             return Ok(carts);
         }
 
 
         [HttpGet("{cartId}")]
-        public async Task<ActionResult<CartDto>> GetCart(int cartId)
+        public async Task<ActionResult<CartDto>> GetCartById(int cartId)
         {
-            return await _unitOfWork.CartRepository.GetCartAsync(cartId);
+            return await _unitOfWork.CartRepository.GetCartById(cartId);
+        }
+
+        [HttpPost("initializecart")]
+        public async Task<ActionResult<Cart>> InitializeCart()
+        {
+            /*check if a cart is initialzed*/
+            var carts = await _unitOfWork.CartRepository.GetCarts();
+            
+            if(carts.FirstOrDefault() != null )
+                return Ok();
+
+            var cart = new Cart();
+            
+            _unitOfWork.CartRepository.AddCart(cart);
+
+            if ( await _unitOfWork.Complete() )
+                return Ok();
+            return BadRequest("The cart could not be initialized!");
+
         }
 
     }

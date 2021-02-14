@@ -13,9 +13,14 @@ namespace API.Data
             _context = context;
             _mapper = mapper;
         }
+        
+        public ICategoryRepository CategoryRepository => new CategoryRepository(_context, _mapper);
+        public IProductTypeRepository ProductTypeRepository => new ProductTypeRepository(_context, _mapper);
+        public IUserRepository UserRepository => new UserRepository(_context, _mapper);
+        public ISellerRepository SellerRepository => new SellerRepository(_context, _mapper);
+        public IProductRepository ProductRepository => new ProductRepository(_context, _mapper);
         public ICartRepository CartRepository => new CartRepository(_context, _mapper);
-        public IProductRepository ProductRepository => new ProductRepository(_context);
-        public IStockRepository StockRepository => new StockRepository(_context);
+        public ICartyRepository CartyRepository => new CartyRepository(_context, _mapper);
 
         public async Task<bool> Complete()
         {
@@ -26,5 +31,6 @@ namespace API.Data
         {
             return _context.ChangeTracker.HasChanges();
         }
+
     }
 } 

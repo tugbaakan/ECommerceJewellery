@@ -9,6 +9,13 @@ namespace API.Helpers
     {
         public AutoMapperProfiles()
         {
+            CreateMap<Category, CategoryDto>();
+            CreateMap<ProductType, ProductTypeDto>();
+
+            CreateMap<Seller, SellerDto>();
+            
+            CreateMap<Product, ProductDto>();
+
             CreateMap<Cart, CartDto>();
             
             CreateMap<Carty, CartyDto>();

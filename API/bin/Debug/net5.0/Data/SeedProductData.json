@@ -1,42 +1,60 @@
 [
     {
-      "ProductName": "Heart Necklace",
-      "ProductDescription": "Fugiat ut nisi non mollit magna amet cupidatat sint qui pariatur officia labore."
+	    "ProductTypeId": 4,
+      "SellerId" : 1,
+      "Name" : "special heart necklace",
+      "Quantity": 5
+    },
+	  {
+	    "ProductTypeId": 3,
+      "SellerId" : 1,
+      "Name": "red rose necklace",
+      "Quantity": 7
+    },
+	  {
+	    "ProductTypeId": 3,
+      "SellerId" : 2,
+      "Quantity": 15 
     },
     {
-      "ProductName": "Flower Necklace",
-      "ProductDescription": "Id magna in cupidatat sint commodo consequat amet consectetur sint tempor ipsum culpa labore nisi."
+	    "ProductTypeId": 4,
+      "SellerId" : 4,
+      "Quantity": 3 
     },
     {
-      "ProductName": "Sun Necklace",
-      "ProductDescription": "Sit laborum proident amet laborum anim ullamco ipsum enim commodo."
+	    "ProductTypeId": 1,
+      "SellerId" : 3,
+      "Name": "north start earing",
+      "Quantity": 4
     },
     {
-      "ProductName": "Moon Necklace",
-      "ProductDescription": "Mollit veniam ipsum do voluptate sit voluptate pariatur id ullamco ex laboris non."
+	    "ProductTypeId": 7,
+      "SellerId" : 3,
+      "Quantity": 8
     },
     {
-      "ProductName": "Star Necklace",
-      "ProductDescription": "Mollit reprehenderit commodo minim amet fugiat ullamco adipisicing velit laboris aliqua ad nisi."
+	    "ProductTypeId": 8,
+      "SellerId" : 3,
+      "Quantity": 20
     },
     {
-      "ProductName": "Clover Necklace",
-      "ProductDescription": "Dolor reprehenderit ipsum commodo nostrud commodo deserunt elit adipisicing in sunt."
+	    "ProductTypeId": 9,
+      "SellerId" : 4,
+      "Quantity": 1
     },
     {
-      "ProductName": "Cat Necklace",
-      "ProductDescription": "Eiusmod incididunt dolore id amet veniam sunt labore consectetur ea labore."
+	    "ProductTypeId": 10,
+      "SellerId" : 4,
+      "Quantity": 11
     },
     {
-      "ProductName": "Apple Necklace",
-      "ProductDescription": "Aliqua dolor pariatur elit nulla consectetur do exercitation proident et et sit ut."
+      "ProductTypeId": 5,
+      "SellerId" : 2,
+      "Quantity": 10 
     },
     {
-      "ProductName": "Square Necklace",
-      "ProductDescription": "Est proident tempor aute ipsum eiusmod veniam eiusmod occaecat ea nulla consectetur ipsum ullamco dolor."
-    },
-    {
-      "ProductName": "Stone Necklace",
-      "ProductDescription": "Mollit veniam Lorem nostrud consequat."
-    }
+      "ProductTypeId": 8,
+      "SellerId" : 1,
+      "Quantity": 8
+    } 
   ]
