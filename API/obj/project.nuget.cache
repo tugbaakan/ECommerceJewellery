@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wKxzWXbLgg5cvQYC7hBJ6RvdgH3BADTBIYXb3RGtjpLX+tYWbqBGqWxlyy+7Zh+1L0waqBNthzAh1KxNkclbPg==",
+  "dgSpecHash": "dm25+EmMyezpAjHipPQN0+3YBSsKzF87TN9BuS5AekgntN4Gak7J/J+d+FW5WBCS2auCb9CfDnTJxCpMpI6ndw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\Documents\\WebApplicationProjects\\EcommerceJewellery\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\admin\\Documents\\GitHub\\ECommerceJewellery\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
