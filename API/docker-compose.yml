@@ -1,0 +1,26 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  ecj-api:
+    build: .
+    environment:
+      DBServer: 'ms-sql-server'
+      DBPort: '1433'
+      DBUser: 'sa'
+      DBPassword: 'Kolas8gh.9'
+      Database: 'ecjdb'
+    ports: 
+      - 8080:80
+    depends_on:
+      - ms-sql-server
+  ms-sql-server : 
+    image: mcr.microsoft.com/mssql/server:2017-CU8-ubuntu
+    ports: 
+      - '1433:1433'
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: 'Kolas8gh.9'
+  
+
