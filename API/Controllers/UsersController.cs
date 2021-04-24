@@ -23,7 +23,7 @@ namespace API.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
-            var users = await _unitOfWork.UserRepository.GetUsers();
+            var users = await _unitOfWork.UserRepository.GetAll();
             return Ok(users);
         }
 
@@ -32,7 +32,7 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<AppUser>> GetUser(int id)
         {
-            var user = await _unitOfWork.UserRepository.GetUserById(id);
+            var user = await _unitOfWork.UserRepository.GetById(id);
             return Ok(user);
         }
   
@@ -48,7 +48,7 @@ namespace API.Controllers
                 UserName = name.ToLower()
             };
 
-            _unitOfWork.UserRepository.AddUser(userNew); 
+            _unitOfWork.UserRepository.Add(userNew); 
            
             if ( await _unitOfWork.Complete() )
                 return Ok();

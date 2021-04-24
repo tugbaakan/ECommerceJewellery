@@ -5,13 +5,10 @@ using API.Entities;
 
 namespace API.Interfaces
 {
-    public interface ICartRepository
+    public interface ICartRepository: IGenericRepository<Cart>
     {
-        Task<IEnumerable<Cart>> GetCarts();
-        Task<Cart> GetCartWithCartiesById(int cartId);
         Task<CartDto> GetCartById(int cartId);
-        void AddCart(Cart cart);
-        void DeleteCart(Cart cart);
+        Task<Cart> GetCartWithCartiesById(int cartId);
       
     }
 }

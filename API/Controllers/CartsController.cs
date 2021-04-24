@@ -22,7 +22,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Cart>>> GetCarts()
         {
-            var carts =  await _unitOfWork.CartRepository.GetCarts();
+            var carts =  await _unitOfWork.CartRepository.GetAll();
             return Ok(carts);
         }
 
@@ -37,14 +37,14 @@ namespace API.Controllers
         public async Task<ActionResult<Cart>> InitializeCart()
         {
             /*check if a cart is initialzed*/
-            var carts = await _unitOfWork.CartRepository.GetCarts();
+            var carts = await _unitOfWork.CartRepository.GetAll();
             
             if(carts.FirstOrDefault() != null )
                 return Ok();
 
             var cart = new Cart();
             
-            _unitOfWork.CartRepository.AddCart(cart);
+            _unitOfWork.CartRepository.Add(cart);
 
             if ( await _unitOfWork.Complete() )
                 return Ok();

@@ -18,7 +18,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductTypeDto>>> GetProductTypes()
         {
-            var productTypes =  await _unitOfWork.ProductTypeRepository.GetProductTypes();
+            var productTypes =  await _unitOfWork.ProductTypeRepository.GetAll();
             return Ok(productTypes);
         }
 
@@ -26,13 +26,13 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductType>> GetProductTypeById(int id)
         {
-            return await _unitOfWork.ProductTypeRepository.GetProductTypeById(id);
+            return await _unitOfWork.ProductTypeRepository.GetById(id);
         }
     
         [HttpPost("add")]
         public async Task<ActionResult> AddProductType([FromQuery] int categoryId, string name )
         {
-            var category = await _unitOfWork.CategoryRepository.GetCategoryById(categoryId);
+            var category = await _unitOfWork.CategoryRepository.GetById(categoryId);
             if(category == null)
                 return BadRequest("There is no such category!");
 
@@ -48,7 +48,7 @@ namespace API.Controllers
                 Name = name
             };
 
-            _unitOfWork.ProductTypeRepository.AddProductType(productTypeNew);
+            _unitOfWork.ProductTypeRepository.Add(productTypeNew);
             
             if ( await _unitOfWork.Complete() )
                 return Ok();

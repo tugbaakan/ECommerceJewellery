@@ -5,14 +5,12 @@ using API.Entities;
 
 namespace API.Interfaces
 {
-    public interface ISellerRepository
+    public interface ISellerRepository: IGenericRepository<Seller>
     {
+
         Task<IEnumerable<SellerDto>> GetSellers();
-        Task<Seller> GetSellerById(int sellerId);
         Task<Seller> GetSellerByUserId(int userId);
         Task<Seller> GetSellerByName(string name);
-        void AddSeller(Seller seller);
-        void UpdateSeller(Seller seller);
-        void DeleteSeller(Seller seller);
+  
     }
 }

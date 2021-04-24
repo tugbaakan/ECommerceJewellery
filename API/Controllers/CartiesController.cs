@@ -22,14 +22,14 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Carty>>> GetCarties()
         {
-            var carties =  await _unitOfWork.CartyRepository.GetCarties();
+            var carties =  await _unitOfWork.CartyRepository.GetAll();
             return Ok(carties);
         }
 
         [HttpGet("{id}")]        
         public async Task<ActionResult<Carty>> GetCartyById(int id)
         {
-            var carty =  await _unitOfWork.CartyRepository.GetCartyById(id);
+            var carty =  await _unitOfWork.CartyRepository.GetById(id);
             return Ok(carty);
         }
 
@@ -37,12 +37,12 @@ namespace API.Controllers
         public async Task<ActionResult> AddToCart([FromQuery] int cartId, int productId, int quantity )
         {
             // check if the cart Id is correct
-            var cart = await _unitOfWork.CartRepository.GetCartById(cartId);
+            var cart = await _unitOfWork.CartRepository.GetById(cartId);
             if(cart == null)
                 return  BadRequest("There is no such cart");   
             
             // check if the product Id is correct
-            var product = await _unitOfWork.ProductRepository.GetProductById(productId);
+            var product = await _unitOfWork.ProductRepository.GetById(productId);
             if(product == null)
                 return BadRequest("There is no such product");
 
@@ -55,7 +55,7 @@ namespace API.Controllers
                     return BadRequest("The desired amount is not available!");
 
                 cartyToBeUpdated.Quantity += quantity;
-                _unitOfWork.CartyRepository.UpdateCarty(cartyToBeUpdated);
+                _unitOfWork.CartyRepository.Update(cartyToBeUpdated);
             }
             else
             {
@@ -69,7 +69,7 @@ namespace API.Controllers
                     Quantity = quantity
                 };
 
-                _unitOfWork.CartyRepository.AddCarty(cartyNew);
+                _unitOfWork.CartyRepository.Add(cartyNew);
             }
 
             if ( await _unitOfWork.Complete() )
@@ -83,7 +83,7 @@ namespace API.Controllers
         public async Task<ActionResult> RemoveFromCart(int cartId, int productId)
         {
             // check if the cart Id is correct
-            var cart = await _unitOfWork.CartRepository.GetCartById(cartId);
+            var cart = await _unitOfWork.CartRepository.GetById(cartId);
             if(cart == null)
                 return  BadRequest("There is no such cart");   
                 
@@ -92,7 +92,7 @@ namespace API.Controllers
             if (cartyToBeDeleted == null)
                 return BadRequest("There is no such product in the cart");
         
-            _unitOfWork.CartyRepository.DeleteCarty(cartyToBeDeleted);
+            _unitOfWork.CartyRepository.Remove(cartyToBeDeleted);
 
             if ( await _unitOfWork.Complete() )
                 return Ok();

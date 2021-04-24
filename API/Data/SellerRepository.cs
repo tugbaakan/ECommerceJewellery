@@ -9,14 +9,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class SellerRepository: ISellerRepository
+    public class SellerRepository: SQLiteBaseRepository<Seller>, ISellerRepository
     {
-        private readonly DataContext _context;
+        private DataContext DataContext_var
+        {
+            get { return _context as DataContext; }
+        }
         private readonly IMapper _mapper;
-        public SellerRepository(DataContext context, IMapper mapper)
+        public SellerRepository(DataContext context, IMapper mapper): base(context)
         {
             _mapper = mapper;
-            _context = context;
         }
         public async Task<IEnumerable<SellerDto>> GetSellers()
         {
@@ -24,10 +26,7 @@ namespace API.Data
                  .ProjectTo<SellerDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
         }
-        public async Task<Seller> GetSellerById(int sellerId)
-        {
-            return await _context.Sellers.FindAsync(sellerId);
-        }
+
         public async Task<Seller> GetSellerByUserId(int userId)
         {
             return await _context.Sellers.SingleOrDefaultAsync(x => x.UserId == userId);
@@ -37,20 +36,7 @@ namespace API.Data
             return await _context.Sellers.SingleOrDefaultAsync(x => x.Name == name);
         }
 
-        public void AddSeller(Seller seller)
-        {
-            _context.Sellers.Add(seller);
-        }
 
-        public void UpdateSeller(Seller seller)
-        {
-            _context.Sellers.Update(seller);
-        }
-
-        public void DeleteSeller(Seller seller)
-        {
-            _context.Sellers.Remove(seller);
-        }
 
 
     }

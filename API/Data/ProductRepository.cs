@@ -10,21 +10,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository : SQLiteBaseRepository<Product>, IProductRepository
     {
-        private readonly DataContext _context;
+        private DataContext DataContext_var
+        {
+            get { return _context as DataContext; }
+        }
         private readonly IMapper _mapper;
-        public ProductRepository(DataContext context, IMapper mapper)
+        public ProductRepository(DataContext context, IMapper mapper): base(context)
         {
             _mapper = mapper;
-            _context = context;
+
         }
-        public async Task<IEnumerable<ProductDto>> GetProducts()
-        {
-            return await _context.Products
-                 .ProjectTo<ProductDto>(_mapper.ConfigurationProvider)
-                .ToListAsync();
-        }
+        
         public async Task<IEnumerable<Product>> GetProductsByProductTypes(int productTypeId)
         {
             return await _context.Products.Where(x => x.ProductTypeId == productTypeId).ToListAsync();
@@ -36,10 +34,7 @@ namespace API.Data
 
         }
         
-        public async Task<Product> GetProductById(int productId)
-        {
-            return await _context.Products.FindAsync(productId);
-        }
+
         
         public async Task<Product> GetProductByName(string name)
         {
@@ -51,23 +46,7 @@ namespace API.Data
             return await _context.Products.SingleOrDefaultAsync(x => x.ProductTypeId == productTypeId
                 && x.SellerId == sellerId );
         }
-        public void AddProduct(Product product)
-        {
 
-            _context.Products.Add(product);
-        
-        }
-        public void UpdateProduct(Product product)
-        {
-
-            _context.Products.Update(product);
-
-        }
-
-        public void DeleteProduct(Product product)
-        {
-            _context.Products.Remove(product);
-        }
 
     }
 }

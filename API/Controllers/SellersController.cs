@@ -29,7 +29,7 @@ namespace API.Controllers
         [HttpPost("add")]
         public async Task<ActionResult<Seller>> AddSeller(SellerCreateDto sellerDto)
         {
-            var user = await _unitOfWork.UserRepository.GetUserById(sellerDto.UserId);
+            var user = await _unitOfWork.UserRepository.GetById(sellerDto.UserId);
             if ( user == null )
                 return BadRequest("There is no such a user!");
 
@@ -43,7 +43,7 @@ namespace API.Controllers
                 City = sellerDto.City
             }; 
 
-            _unitOfWork.SellerRepository.AddSeller(sellerNew); 
+            _unitOfWork.SellerRepository.Add(sellerNew); 
            
             if ( await _unitOfWork.Complete() )
                 return Ok();

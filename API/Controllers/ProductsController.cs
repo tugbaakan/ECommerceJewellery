@@ -22,7 +22,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            var products =  await _unitOfWork.ProductRepository.GetProducts();
+            var products =  await _unitOfWork.ProductRepository.GetAll();
             return Ok(products);
         }
 
@@ -30,17 +30,17 @@ namespace API.Controllers
         [HttpGet("{productId}")]
         public async Task<ActionResult<Product>> GetProduct(int productId)
         {
-            return await _unitOfWork.ProductRepository.GetProductById(productId);
+            return await _unitOfWork.ProductRepository.GetById(productId);
         }
     
         [HttpPost("add")]
         public async Task<ActionResult> AddProduct([FromQuery] int productTypeId, int sellerId, string name, int quantity )
         {
-            var productType = await _unitOfWork.ProductTypeRepository.GetProductTypeById(productTypeId);
+            var productType = await _unitOfWork.ProductTypeRepository.GetById(productTypeId);
             if(productType == null)
                 return BadRequest("There is no such product type!");
             
-            var seller = await _unitOfWork.SellerRepository.GetSellerById(sellerId);
+            var seller = await _unitOfWork.SellerRepository.GetById(sellerId);
             if(seller == null)
                 return BadRequest("There is no such seller!");
 
@@ -55,7 +55,7 @@ namespace API.Controllers
                 Quantity = quantity
             };
 
-            _unitOfWork.ProductRepository.AddProduct(productNew);
+            _unitOfWork.ProductRepository.Add(productNew);
             
             if ( await _unitOfWork.Complete() )
                 return Ok();
@@ -66,11 +66,11 @@ namespace API.Controllers
         [HttpPost("update")]
         public async Task<ActionResult> UpdateProduct([FromQuery] int productTypeId, int sellerId, int quantity )
         {
-            var productType = await _unitOfWork.ProductTypeRepository.GetProductTypeById(productTypeId);
+            var productType = await _unitOfWork.ProductTypeRepository.GetById(productTypeId);
             if(productType == null)
                 return BadRequest("There is no such product type!");
             
-            var seller = await _unitOfWork.SellerRepository.GetSellerById(sellerId);
+            var seller = await _unitOfWork.SellerRepository.GetById(sellerId);
             if(seller == null)
                 return BadRequest("There is no such seller!");
 
@@ -80,7 +80,7 @@ namespace API.Controllers
 
             product.Quantity += quantity;
             
-            _unitOfWork.ProductRepository.UpdateProduct(product);
+            _unitOfWork.ProductRepository.Update(product);
             
             if ( await _unitOfWork.Complete() )
                 return Ok();

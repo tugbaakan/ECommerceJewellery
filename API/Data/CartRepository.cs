@@ -10,18 +10,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class CartRepository : ICartRepository
+    public class CartRepository : SQLiteBaseRepository<Cart>, ICartRepository
     {
-        private readonly DataContext _context;
+        private DataContext DataContext_var
+        {
+            get { return _context as DataContext; }
+        }
         private readonly IMapper _mapper;
-        public CartRepository(DataContext context, IMapper mapper)
+        public CartRepository(DataContext context, IMapper mapper): base(context)
         {
             _mapper = mapper;
-            _context = context;
-        }
-        public async Task<IEnumerable<Cart>> GetCarts()
-        {
-             return await _context.Carts.ToListAsync();
         }
 
         // dont call it from the web page, use it as internal
@@ -41,16 +39,6 @@ namespace API.Data
                 .FirstOrDefaultAsync();
 
         }
-
-        public void AddCart(Cart cart)
-        {
-            _context.Carts.Add(cart);
-        }
-        public void DeleteCart(Cart cart)
-        {
-            _context.Carts.Remove(cart);
-        }
-
 
     }
 }

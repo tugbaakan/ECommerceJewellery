@@ -17,7 +17,7 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            var categories =  await _unitOfWork.CategoryRepository.GetCategories();
+            var categories =  await _unitOfWork.CategoryRepository.GetAll();
             return Ok(categories);
         }
     
@@ -32,7 +32,7 @@ namespace API.Controllers
                 Name = name.ToLower()
             };
 
-            _unitOfWork.CategoryRepository.AddCategory(categoryNew); 
+            _unitOfWork.CategoryRepository.Add(categoryNew); 
            
             if ( await _unitOfWork.Complete() )
                 return Ok();
